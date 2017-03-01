@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="scampus_lose:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="scampus_lose.war">
+      <element id="artifact" artifact-name="scampus_lose:war exploded" />
+    </root>
+  </artifact>
+</component>
