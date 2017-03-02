@@ -11,6 +11,14 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="a.xml" value="f4d02b24-a8e0-4baa-9c9b-50c9988dba52" />
+        </datasource-map>
+        <naming-strategy-map />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -57,6 +65,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.13" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.0.8" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.40" level="project" />
   </component>
 </module>

@@ -5,9 +5,28 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="user" class="service.UserAction">
-            <result name="ok">index.jsp</result>
+    <!--json data -->
+    <!--<package name="wang" namespace="/" extends="json-default">-->
+        <!--<action name="users" class="userAction">-->
+            <!--<result name="success" type="json">-->
+                <!--<param name="root">list</param>-->
+            <!--</result>-->
+        <!--</action>-->
+    <!--</package>-->
+
+    <!--index data-->
+    <package name="default" namespace="/li" extends="struts-default">
+        <action name="user" class="view.NameAction">
+            <result name="indexinfo">/li/lose.html</result>
+        </action>
+        <!--提交的表单信息-->
+        <action name="submitInfo" class="view.SubmitInfoAction">
+            <result name="ok">../error.html</result>
+        </action>
+        <action name="content" class="iAction">
+            <!--有问题呐   这个路径问题-->
+            <result name="index_info">../indexinfo.jsp</result>
         </action>
     </package>
+
 </struts>
