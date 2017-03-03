@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<div class="weui_cells_title">带说明、跳转的列表项</div>
-<div class="weui_cells weui_cells_access">
+<body>
     <s:iterator value="listIndexInfo">
         <a class="weui_cell" href="javascript:;">
             <div class="weui_cell_bd weui_cell_primary">
@@ -26,4 +25,4 @@
     <%--总页数和页数传到主页中去     后续需要优化--%>
     <span style="display:none" , id="span1">${p.page}</span>
     <span style="display:none" , id="span2">${p.total}</span>
-</div>
+</body>

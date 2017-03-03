@@ -56,7 +56,9 @@ public class SubmitInfoAction extends ActionSupport{
         System.out.println(sub.getLose_location());
         System.out.println(sub.getLose_info());
         System.out.println(sub.getLose_phone());
-
+        if(picFile == null){
+            System.out.println("fsdfkdsjlj");
+        }
         return "ok";
     }
 }

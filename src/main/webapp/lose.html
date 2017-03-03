@@ -26,14 +26,20 @@
         });
     </script>
 </head>
-<body>
+<body ontouchstart>
+<header class='demos-header'>
+    <h1 class="demos-title">明德失物招领信息发布中心</h1>
+</header>
+<div >
 
-<div id="btn1">
+    <div  id="btn1" class="weui_cells weui_cells_access">
 
+    </div>
+    <a href="javascript:;" id="button1" class="weui_btn weui_btn_default">按钮</a>
 </div>
 
 
-<a href="javascript:;" id="button1" class="weui_btn weui_btn_default">按钮</a>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#button1").click(function () {
@@ -55,9 +61,6 @@
                         $.toast("操作成功", function () {
                             console.log('close');
                         });
-                        if (page == pageTotal) {
-                            $("#button1").remove();
-                        }
                     },
                     error: function () {
                         alert("异步失败");
