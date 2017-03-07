@@ -90,46 +90,32 @@
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="9" name="ltid">
+    <column id="26" parent="9" name="lcid">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="9" name="lcid">
+    <column id="27" parent="9" name="lscount">
       <Position>10</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="9" name="lscount">
-      <Position>11</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="29" parent="9" name="show_info_type">
-      <ColNames>ltid</ColNames>
-    </index>
-    <key id="30" parent="9" name="PRIMARY">
+    <key id="28" parent="9" name="PRIMARY">
       <ColNames>lid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="31" parent="9" name="show_info_type">
-      <ColNames>ltid</ColNames>
-      <RefSchemaName>lose</RefSchemaName>
-      <RefTableName>lose_type</RefTableName>
-      <RefColNames>ltid</RefColNames>
-    </foreign-key>
-    <column id="32" parent="10" name="id">
+    <column id="29" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="33" parent="10" name="username">
+    <column id="30" parent="10" name="username">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="34" parent="10" name="PRIMARY">
+    <key id="31" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

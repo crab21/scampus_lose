@@ -2,6 +2,8 @@ package controller;
 
 import biz.ContentBizImpl;
 import entity.Page;
+import entity.ShowInfoEntity;
+import entity.SubmitInfo;
 
 import java.util.List;
 
@@ -15,16 +17,21 @@ public class ContentService implements ContentInterface {
         this.iservice = iservice;
     }
 
-    public int SubmitContent(List list) {
-        return 0;
+    public int SubmitContent(SubmitInfo submitInfo) {
+        return iservice.SubmitInfo(submitInfo);
     }
 
     public int confirmLose(int id) {
         return 0;
     }
 
-    public int getPageTotal(){
+    public int getPageTotal() {
         return iservice.PageTotal();
+    }
+
+    public ShowInfoEntity findSubmitInfoById(String id) {
+        return iservice.getSubmitInfoById(id);
+
     }
 
     public List loadAllLoseInfo(Page p) {
@@ -34,12 +41,16 @@ public class ContentService implements ContentInterface {
     public List manageInfo() {
         return null;
     }
+
     /*
         public boolean login(User user) {
             return false;
-        }
-    */
+        }    */
     public List searchLose(String content) {
         return null;
+    }
+
+    public void deleteByIdService(int id) {
+        iservice.deleteByIdBiz(id);
     }
 }

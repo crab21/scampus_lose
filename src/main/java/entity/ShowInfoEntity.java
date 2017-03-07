@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * Created by root on 17-3-2.
+ * Created by root on 17-3-5.
  */
 public class ShowInfoEntity {
     private int lid;

@@ -4,9 +4,11 @@ controller/UserAction.class
 dao/LoadIndexInfoDao.class
 biz/ContentBiz.class
 entity/SubmitInfo.class
+view/ManageAction.class
 entity/LoseConfirmEntity.class
 view/SubmitInfoAction.class
 controller/ContentInterface.class
+view/ContentOne.class
 view/LoadContentAction.class
 biz/ContentBizImpl.class
 entity/Page.class

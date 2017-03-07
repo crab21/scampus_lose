@@ -1,12 +1,12 @@
 package view;
 
 import com.opensymphony.xwork2.ActionSupport;
+import controller.ContentService;
 import entity.SubmitInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-
 /**
  * Created by root on 17-2-11.
  */
@@ -15,6 +15,7 @@ public class SubmitInfoAction extends ActionSupport{
     private File picFile;
     private String picFileContentType;
     private String picFileFileName;
+
 
     public File getPicFile() {
         return picFile;
@@ -48,17 +49,18 @@ public class SubmitInfoAction extends ActionSupport{
         this.sub = sub;
     }
 
+//    set zhuru
+    private ContentService contentService;
+
+    public void setContentService(ContentService contentService) {
+        this.contentService = contentService;
+    }
+
     @Override
     public String execute() throws Exception {
 
-        System.out.println(sub.getLose_type());
-        System.out.println(sub.getLose_name());
-        System.out.println(sub.getLose_location());
-        System.out.println(sub.getLose_info());
-        System.out.println(sub.getLose_phone());
-        if(picFile == null){
-            System.out.println("fsdfkdsjlj");
-        }
-        return "ok";
+        contentService.SubmitContent(sub);
+
+        return "submit_ok";
     }
 }

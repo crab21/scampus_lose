@@ -1,11 +1,14 @@
+/home/k/jwork/scampus_lose/src/main/java/view/DeleteInfo.java
 /home/k/jwork/scampus_lose/src/main/java/view/NameAction.java
 /home/k/jwork/scampus_lose/src/main/java/view/LoadContentAction.java
 /home/k/jwork/scampus_lose/src/main/java/view/SubmitInfoAction.java
 /home/k/jwork/scampus_lose/src/main/java/controller/ContentService.java
+/home/k/jwork/scampus_lose/src/main/java/view/ContentOne.java
 /home/k/jwork/scampus_lose/src/main/java/controller/UserAction.java
 /home/k/jwork/scampus_lose/src/main/java/entity/Page.java
 /home/k/jwork/scampus_lose/src/main/java/biz/ContentBiz.java
 /home/k/jwork/scampus_lose/src/main/java/entity/LoseConfirmEntity.java
+/home/k/jwork/scampus_lose/src/main/java/view/ManageAction.java
 /home/k/jwork/scampus_lose/src/main/java/biz/ContentBizImpl.java
 /home/k/jwork/scampus_lose/src/main/java/entity/LoseTypeEntity.java
 /home/k/jwork/scampus_lose/src/main/java/entity/ShowInfoEntity.java

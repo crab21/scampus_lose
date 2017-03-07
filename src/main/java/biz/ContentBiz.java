@@ -1,6 +1,7 @@
 package biz;
 
 import entity.Page;
+import entity.SubmitInfo;
 
 import java.util.List;
 
@@ -9,5 +10,8 @@ import java.util.List;
  */
 public interface ContentBiz {
     public List getIndexInfo(Page p);
-    public int PageTotal();
+     public int PageTotal();
+    public int SubmitInfo(SubmitInfo submitInfo);
+
+    public  void deleteByIdBiz(int id);
 }

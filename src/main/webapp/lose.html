@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>明德失物招领信息发布中心|明德微校园</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="css/weui.min.css">
     <link rel="stylesheet" href="css/jquery-weui.css">
     <link rel="stylesheet" href="css/demos.css">
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="css/weui.css">
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $.ajax({
                 type: "POST",
-                url: "/li/content.action",
+                url: "/scampus_lose/li/content.action",
                 dataType: "html",
                 success: function (data) {
-                    alert(data);
                     $("#btn1").append(data);
+                    var pageTotal = Number($("#span2").text());
+                    if (pageTotal < 10) {
+                        $("#button1").remove();
+                    }
                 },
                 error: function () {
-                    alert("异步失败");
+                    alert("加载失败");
                 }
 
             });
@@ -27,77 +33,131 @@
     </script>
 </head>
 <body ontouchstart>
-<header class='demos-header'>
-    <h1 class="demos-title">明德失物招领信息发布中心</h1>
-</header>
-<div >
-
-    <div  id="btn1" class="weui_cells weui_cells_access">
-
-    </div>
-    <a href="javascript:;" id="button1" class="weui_btn weui_btn_default">按钮</a>
+<img src="pic/fenxiang.jpg" width="0" height="0">
+<h1 class="demos-title" style="font-size:20px">明德失物招领信息发布中心</h1>
+<div>
+    <div id="btn1" class="weui_cells weui_cells_access"></div>
+    <a href="javascript:;" id="button1" class="weui_btn weui_btn_default">加载更多</a>
 </div>
-
 
 
 <script type="text/javascript">
     $(document).ready(function () {
         $("#button1").click(function () {
             var page = Number($("#span1").text());
-            var pageTotal = Number($("#span2").text());
 
-            alert(page);
+
             if (page > 0) {
                 $("#span1").remove();
                 page = page + 1;
-                alert(page + "--------");
                 $.ajax({
-                    type: "POST",
-                    url: "li/content.action",
-                    dataType: "html",
-                    data: "p.page=" + (page) + "",
-                    success: function (data) {
-                        $("#btn1").append(data);
-                        $.toast("操作成功", function () {
-                            console.log('close');
-                        });
-                    },
-                    error: function () {
-                        alert("异步失败");
+                        type: "POST",
+                        url: "/scampus_lose/li/content.action",
+                        dataType: "html",
+                        data: "p.page=" + (page) + "",
+                        success: function (data) {
+                            if (data.length == 7) {
+                                $("#button1").remove();
+                                $.toast("亲,暂无更多消息了...", "forbidden");
+
+                            } else {
+                                $("#btn1").append(data);
+                                $.toast("加载成功", function () {
+                                    console.log('close');
+                                });
+                            }
+                        }
+//                        error: function () {
+//                            alert("加载失败");
+//                        }
                     }
-                });
-            } else {
-//                $("#button1").remove();
-                alert("亲,暂无更多消息了...");
+                );
             }
+            else {
+//                $("#button1").remove();
+                $.toast("亲,暂无更多消息了...", "forbidden");
+            }
+        })
+        ;
+    })
+    ;
+</script>
+
+
+<div class='demos-content-padded'>
+    <a href="javascript:;" id='show-actions' class="weui_btn weui_btn_primary">更多操作</a>
+</div>
+
+
+<script src="js/jquery-weui.js"></script>
+
+<script>
+    $(document).on("click", "#show-actions", function () {
+        $.actions({
+            title: "选择操作",
+            onClose: function () {
+                console.log("close");
+            },
+            actions: [
+                {
+                    text: "搜索",
+                    className: "color-warning",
+                    onClick: function () {
+                        $.alert("3.13日开放此功能,敬请关注.");
+                    }
+                },
+                {
+                    text: "发布",
+                    className: "color-primary",
+                    onClick: function () {
+                        location.href = "scampus/submit.html";
+                    }
+                },
+                {
+                    text: "公告",
+                    className: 'color-danger',
+                    onClick: function () {
+                        $.alert("3.13日开放此功能,敬请关注.");
+                    }
+                }
+            ]
         });
     });
 </script>
 
 
-<!--jie mian xia mian de panel an niu-->
-<div class="weui_tabbar">
-    <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
-        <div class="weui_tabbar_icon">
-            <img src="./images/icon_nav_search_bar.png" alt="">
-        </div>
-        <p class="weui_tabbar_label">搜索</p>
-    </a>
-    <a href="scampus/submit.html" class="weui_tabbar_item">
-        <div class="weui_tabbar_icon">
-            <img src="./images/icon_nav_article.png" alt="">
-        </div>
-        <p class="weui_tabbar_label">发布</p>
-    </a>
-    <a href="javascript:;" class="weui_tabbar_item">
-        <div class="weui_tabbar_icon">
-            <img src="./images/icon_nav_dialog.png" alt="">
-        </div>
-        <p class="weui_tabbar_label">公告</p>
-    </a>
+<!--&lt;!&ndash;jie mian xia mian de panel an niu&ndash;&gt;-->
+<!--<div class="weui_tabbar">-->
+<!--<a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">-->
+<!--<div class="weui_tabbar_icon">-->
+<!--<img src="./images/icon_nav_search_bar.png" alt="">-->
+<!--</div>-->
+<!--<p class="weui_tabbar_label">搜索</p>-->
+<!--</a>-->
+<!--<a href="scampus/submit.html" class="weui_tabbar_item">-->
+<!--<div class="weui_tabbar_icon">-->
+<!--<img src="./images/icon_nav_article.png" alt="">-->
+<!--</div>-->
+<!--<p class="weui_tabbar_label">发布</p>-->
+<!--</a>-->
+<!--<a href="javas  cript:;" class="weui_tabbar_item">-->
+<!--<div class="weui_tabbar_icon">-->
+<!--<img src="./images/icon_nav_dialog.png" alt="">-->
+<!--</div>-->
+<!--<p class="weui_tabbar_label">公告</p>-->
+<!--</a>-->
 
-</div>
+<!--</div>-->
 </div>
 
+
+<div style="text-align:center;">
+    <img alt="." src="pic/scampus.png" width="100px" height="100px">
+    <img alt="." src="pic/zhaoling.jpg" width="100px" height="100px">
+</div>
+<br>
+<div align="center" style="font-style: italic;color: #9B9B9B">
+    <p>&copy;明德微校园&nbsp;&nbsp;&nbsp;&nbsp;<font>MrCrab</font></p>
+</div>
 </body>
 </html>

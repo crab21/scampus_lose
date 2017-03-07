@@ -2,27 +2,22 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <body>
-    <s:iterator value="listIndexInfo">
-        <a class="weui_cell" href="javascript:;">
+<s:iterator value="listIndexInfo">
+    <a href="/li/content.action" class="weui_btn weui_btn_primary open-popup" data-target="#full">
+        <a class="weui_cell" href="/scampus_lose/li/contentone.action?lid=<s:property value="lid"/>">
             <div class="weui_cell_bd weui_cell_primary">
+                <p style="display: none"><s:property value="lid"/></p>
                 <p>
                     <s:property value="loseName"/>
                 </p>
             </div>
             <div class="weui_cell_ft">
-                <s:if test="%{loseType==0}">
-                    失物申报
-                </s:if>
-                <s:else>
-                    失物上交
-                </s:else>
+                <s:property value="loseType"/>
             </div>
         </a>
-    </s:iterator>
-    <s:if test="%{p.total==p.page}">
-        暂无更多信息.
-    </s:if>
-    <%--总页数和页数传到主页中去     后续需要优化--%>
-    <span style="display:none" , id="span1">${p.page}</span>
-    <span style="display:none" , id="span2">${p.total}</span>
+    </a>
+</s:iterator>
+<%--总页数和页数传到主页中去     后续需要优化--%>
+<span style="display:none" , id="span1">${p.page}</span>
+<span style="display:none" , id="span2">${p.total}</span>
 </body>

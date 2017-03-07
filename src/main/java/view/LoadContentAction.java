@@ -1,8 +1,9 @@
 package view;
+
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Page;
 import entity.ShowInfoEntity;
-import org.apache.log4j.Logger;
+
 import controller.ContentService;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by root on 17-2-4.
  */
 public class LoadContentAction extends ActionSupport {
-    private List<ShowInfoEntity> listIndexInfo;
+    private List<ShowInfoEntity> listIndexInfo = null;
     private Page p = new Page();
 
     public Page getP() {
@@ -37,7 +38,6 @@ public class LoadContentAction extends ActionSupport {
         this.iaction = iaction;
     }
 
-    private static Logger logger = Logger.getLogger(LoadContentAction.class);
 //    private static Logger logger = Logger.getLogger(LoadContentAction.class.getName());
 
     /*
@@ -46,14 +46,12 @@ public class LoadContentAction extends ActionSupport {
  */
     @Override
     public String execute() throws Exception {
-        try {
-            p.setTotal(iaction.getPageTotal());
-            listIndexInfo = iaction.loadAllLoseInfo(p);
-        } catch (Exception e) {
-//            logger.error(e.printStackTrace());
-            logger.error(e.getMessage());
+        listIndexInfo = iaction.loadAllLoseInfo(p);
+        int listSize = listIndexInfo.size();
+        p.setTotal(listSize);
+        if(listSize == 0){
+            return  "NoInfo";
         }
-
         return "index_info";
     }
 }

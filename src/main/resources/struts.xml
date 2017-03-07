@@ -20,13 +20,23 @@
             <result name="indexinfo">/li/lose.html</result>
         </action>
         <!--提交的表单信息-->
-        <action name="submitInfo" class="view.SubmitInfoAction">
+        <action name="submitInfo" class="SubAction">
             <result name="ok">../error.html</result>
+            <result name="submit_ok" type="redirect">../submit_success.html</result>
         </action>
         <action name="content" class="iAction">
             <!--有问题呐   这个路径问题-->
-            <result name="index_info">../indexinfo.jsp</result>
+            <result name="index_info" >../indexinfo.jsp</result>
+            <result name="NoInfo">../noinfo.jsp</result>
+        </action>
+        <action name="contentone" class="ContentOne">
+            <result name="ok" type="dispatcher">../contentone.jsp</result>
+        </action>
+        <action name="del" class="Manage">
+            <result name="manage">../manage.jsp</result>
+        </action>
+        <action name="infodel" class="Delete">
+            <result name="delOk" type="redirectAction">del</result>
         </action>
     </package>
-
 </struts>

@@ -9,17 +9,17 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/tx
-  	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
   	http://www.springframework.org/schema/aop
   	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost:3306/lose?characterEncoding=utf8&amp;useSSL=false"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="root"></property>
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.logicalcobwebs.proxool.ProxoolDriver"/>
+        <property name="url" value="proxool.userdb"/>
     </bean>
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 
         <property name="dataSource">
             <ref bean="dataSource"/>
@@ -28,7 +28,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <!--<prop key="hibernate.show_sql">true</prop>-->
             </props>
 
         </property>
@@ -41,6 +41,15 @@
         </property>
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <tx:advice id="txadvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="SubmitDao*" propagation="REQUIRED" no-rollback-for="com.exception.MyRuntimeException"/>
+
+        </tx:attributes>
+    </tx:advice>
 
     <!--dao层注入-->
 
@@ -59,6 +68,18 @@
     </bean>
     <!--action层注入-->
     <bean id="iAction" class="view.LoadContentAction" scope="prototype">
+        <property name="iaction" ref="iservice"/>
+    </bean>
+    <bean id="SubAction" class="view.SubmitInfoAction" scope="prototype">
+        <property name="contentService" ref="iservice"/>
+    </bean>
+    <bean id="ContentOne" class="view.ContentOne" scope="prototype">
+        <property name="contentService" ref="iservice"/>
+    </bean>
+    <bean id="Manage" class="view.ManageAction" scope="prototype">
+        <property name="iaction" ref="iservice"/>
+    </bean>
+    <bean id="Delete" class="view.DeleteInfo" scope="prototype">
         <property name="iaction" ref="iservice"/>
     </bean>
 </beans>

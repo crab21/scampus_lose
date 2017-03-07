@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <link rel="stylesheet" href="css/demos.css">
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.toptip('操作成功', 'success');
+            showTime();
+        })
+
+    </script>
+
+
+</head>
+<body ontouchstart style="text-align:center">
+
+<p id='div1'></p>
+
+
+<script type="text/javascript">
+    //设定倒数秒数
+    var t = 5;
+    //显示倒数秒数
+    function showTime() {
+        t -= 1;
+        document.getElementById('div1').innerHTML = t+'秒后自动跳转到主页....';
+        if (t == 0) {
+            location.href = 'http://imrcrab.com/scampus_lose/lose.html';
+        }
+        //每秒执行一次,showTime()
+        setTimeout("showTime()", 1000);
+    }
+
+
+    //执行showTime()
+
+</script>
+</body>
+</html>
