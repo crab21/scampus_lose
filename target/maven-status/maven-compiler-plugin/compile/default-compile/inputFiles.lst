@@ -5,6 +5,8 @@
 /home/k/jwork/scampus_lose/src/main/java/controller/ContentService.java
 /home/k/jwork/scampus_lose/src/main/java/view/ContentOne.java
 /home/k/jwork/scampus_lose/src/main/java/controller/UserAction.java
+/home/k/jwork/scampus_lose/src/main/java/view/AjaxUpload.java
+/home/k/jwork/scampus_lose/src/main/java/view/SearchInfo.java
 /home/k/jwork/scampus_lose/src/main/java/entity/Page.java
 /home/k/jwork/scampus_lose/src/main/java/biz/ContentBiz.java
 /home/k/jwork/scampus_lose/src/main/java/entity/LoseConfirmEntity.java
@@ -12,6 +14,7 @@
 /home/k/jwork/scampus_lose/src/main/java/biz/ContentBizImpl.java
 /home/k/jwork/scampus_lose/src/main/java/entity/LoseTypeEntity.java
 /home/k/jwork/scampus_lose/src/main/java/entity/ShowInfoEntity.java
+/home/k/jwork/scampus_lose/src/main/java/controller/Valivator/RequestParseWrapper.java
 /home/k/jwork/scampus_lose/src/main/java/entity/SubmitInfo.java
 /home/k/jwork/scampus_lose/src/main/java/dao/LoadIndexInfoDao.java
 /home/k/jwork/scampus_lose/src/main/java/controller/ContentInterface.java

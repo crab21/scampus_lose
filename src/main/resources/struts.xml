@@ -14,6 +14,10 @@
         <!--</action>-->
     <!--</package>-->
 
+    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+          name="myRequestParser" class="controller.Valivator.RequestParseWrapper"
+          scope="default" optional="true" />
+    <constant name="struts.multipart.parser" value="myRequestParser" />
     <!--index data-->
     <package name="default" namespace="/li" extends="struts-default">
         <action name="user" class="view.NameAction">
@@ -39,4 +43,17 @@
             <result name="delOk" type="redirectAction">del</result>
         </action>
     </package>
+    <package name="ajaxload" namespace="/" extends="json-default,struts-default">
+        <action name="upload" class="view.AjaxUpload">
+            <result type="json">
+                <param name="root">Info</param>
+            </result>
+        </action>
+        <action name="search" class="SearchInfoByName">
+            <result name="success">/scampus/search.jsp</result>
+            <result name="index">lose.html</result>
+        </action>
+    </package>
+
+
 </struts>

@@ -17,6 +17,5 @@ public interface ContentInterface {
     public List manageInfo();
     //public boolean login(User user);
     public List searchLose(String content);
-
     public void deleteByIdService(int id);
 }

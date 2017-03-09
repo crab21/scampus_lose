@@ -14,4 +14,6 @@ public interface ContentBiz {
     public int SubmitInfo(SubmitInfo submitInfo);
 
     public  void deleteByIdBiz(int id);
+
+    public List SearchByName(String name);
 }

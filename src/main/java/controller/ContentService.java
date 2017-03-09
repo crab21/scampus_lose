@@ -21,23 +21,37 @@ public class ContentService implements ContentInterface {
         return iservice.SubmitInfo(submitInfo);
     }
 
+    /*
+    确认信息  暂时没用
+     */
     public int confirmLose(int id) {
         return 0;
     }
 
+    /*
+    确认信息  暂时没用
+     */
     public int getPageTotal() {
         return iservice.PageTotal();
     }
 
+    /*
+    加载  通过id获取   单个信息
+     */
     public ShowInfoEntity findSubmitInfoById(String id) {
         return iservice.getSubmitInfoById(id);
 
     }
-
+    /*
+    加载主页信息
+     */
     public List loadAllLoseInfo(Page p) {
         return iservice.getIndexInfo(p);
     }
 
+    /*
+    暂时没用
+     */
     public List manageInfo() {
         return null;
     }
@@ -46,10 +60,16 @@ public class ContentService implements ContentInterface {
         public boolean login(User user) {
             return false;
         }    */
+    /*
+    搜索引擎
+     */
     public List searchLose(String content) {
-        return null;
+        return iservice.SearchByName(content);
     }
 
+    /*
+    后台管理删除账号
+     */
     public void deleteByIdService(int id) {
         iservice.deleteByIdBiz(id);
     }

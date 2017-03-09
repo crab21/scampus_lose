@@ -9,6 +9,10 @@
                 <p style="display: none"><s:property value="lid"/></p>
                 <p>
                     <s:property value="loseName"/>
+                    <c:if test="${loseImg!='aa'}">
+                        <font color="red">[图]</font>
+                    </c:if>
+
                 </p>
             </div>
             <div class="weui_cell_ft">

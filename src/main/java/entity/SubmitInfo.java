@@ -9,16 +9,18 @@ public class SubmitInfo {
     private String lose_location;
     private String lose_info;
     private String lose_phone;
+    private String lose_img;
 
     public SubmitInfo() {
     }
 
-    public SubmitInfo(String lose_type, String lose_name, String lose_location, String lose_info, String lose_phone) {
+    public SubmitInfo(String lose_type, String lose_name, String lose_location, String lose_info, String lose_phone, String lose_img) {
         this.lose_type = lose_type;
         this.lose_name = lose_name;
         this.lose_location = lose_location;
         this.lose_info = lose_info;
         this.lose_phone = lose_phone;
+        this.lose_img = lose_img;
     }
 
     public String getLose_type() {
@@ -59,5 +61,13 @@ public class SubmitInfo {
 
     public void setLose_phone(String lose_phone) {
         this.lose_phone = lose_phone;
+    }
+
+    public String getLose_img() {
+        return lose_img;
+    }
+
+    public void setLose_img(String lose_img) {
+        this.lose_img = lose_img;
     }
 }

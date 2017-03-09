@@ -82,4 +82,10 @@
     <bean id="Delete" class="view.DeleteInfo" scope="prototype">
         <property name="iaction" ref="iservice"/>
     </bean>
+    <bean id="SearchInfoByName" class="view.SearchInfo" scope="prototype">
+        <property name="isearch" ref="iservice"/>
+    </bean>
+
+
+
 </beans>

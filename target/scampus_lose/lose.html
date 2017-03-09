@@ -5,12 +5,11 @@
     <title>明德失物招领信息发布中心|明德微校园</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/weui.css">
     <link rel="stylesheet" href="css/jquery-weui.css">
     <link rel="stylesheet" href="css/demos.css">
-    <link rel="stylesheet" href="css/weui.css">
-    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/jquery-weui.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $.ajax({
@@ -18,7 +17,7 @@
                 url: "/scampus_lose/li/content.action",
                 dataType: "html",
                 success: function (data) {
-                    $("#btn1").append(data);
+                    $("#btn1").append(data).slideDown;
                     var pageTotal = Number($("#span2").text());
                     if (pageTotal < 10) {
                         $("#button1").remove();
@@ -61,7 +60,7 @@
                                 $.toast("亲,暂无更多消息了...", "forbidden");
 
                             } else {
-                                $("#btn1").append(data);
+                                $("#btn1").append(data).slideDown;
                                 $.toast("加载成功", function () {
                                     console.log('close');
                                 });
@@ -84,46 +83,7 @@
 </script>
 
 
-<div class='demos-content-padded'>
-    <a href="javascript:;" id='show-actions' class="weui_btn weui_btn_primary">更多操作</a>
-</div>
 
-
-<script src="js/jquery-weui.js"></script>
-
-<script>
-    $(document).on("click", "#show-actions", function () {
-        $.actions({
-            title: "选择操作",
-            onClose: function () {
-                console.log("close");
-            },
-            actions: [
-                {
-                    text: "搜索",
-                    className: "color-warning",
-                    onClick: function () {
-                        $.alert("3.13日开放此功能,敬请关注.");
-                    }
-                },
-                {
-                    text: "发布",
-                    className: "color-primary",
-                    onClick: function () {
-                        location.href = "scampus/submit.html";
-                    }
-                },
-                {
-                    text: "公告",
-                    className: 'color-danger',
-                    onClick: function () {
-                        $.alert("3.13日开放此功能,敬请关注.");
-                    }
-                }
-            ]
-        });
-    });
-</script>
 
 
 <!--&lt;!&ndash;jie mian xia mian de panel an niu&ndash;&gt;-->
@@ -150,6 +110,54 @@
 <!--</div>-->
 </div>
 
+<div class='demos-content-padded'>
+    <a href="javascript:;" id='show-actions' class="weui_btn weui_btn_primary">更多操作</a>
+</div>
+
+
+<script src="js/jquery-weui.js"></script>
+
+<script src="js/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+<script>
+    $(document).on("click", "#show-actions", function () {
+        $.actions({
+            title: "选择操作",
+            onClose: function () {
+                console.log("close");
+            },
+            actions: [
+                {
+                    text: "搜索",
+                    className: "color-warning",
+                    onClick: function () {
+                        $.prompt({
+                            title: "请输入搜索的内容",
+                            onOK: function(text) {
+                               location.href="search?searchInfo="+text+"";
+                            },
+                            onCancel: function() {
+                                console.log("取消");
+                            },
+                            input: '一卡通'
+                        });
+                    }
+                },
+                {
+                    text: "发布",
+                    className: "color-primary",
+                    onClick: function () {
+                        location.href = "scampus/submit.html";
+                    }
+                }
+            ]
+        });
+    });
+</script>
 
 <div style="text-align:center;">
     <img alt="." src="pic/scampus.png" width="100px" height="100px">

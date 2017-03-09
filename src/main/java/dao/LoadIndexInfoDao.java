@@ -50,7 +50,7 @@ public class LoadIndexInfoDao extends HibernateDaoSupport {
         showInfoEntity.setLoseType(submitInfo.getLose_type());
         showInfoEntity.setLoseTime(new Date().toLocaleString());
         showInfoEntity.setLscount(0);
-        showInfoEntity.setLoseImg("img");
+        showInfoEntity.setLoseImg(submitInfo.getLose_img());
         Transaction tx = session.beginTransaction();
         int a = (Integer) session.save(showInfoEntity);
         tx.commit();
@@ -81,5 +81,23 @@ public class LoadIndexInfoDao extends HibernateDaoSupport {
     public int getPTotal() {
 
         return 4;
+    }
+
+
+    public List SearchByNameDao(String searchInfo){
+        Session session = this.getSessionFactory().openSession();
+//        List list = super.getHibernateTemplate().find("from entity.ShowInfoEntity");
+
+        String hql = "from entity.ShowInfoEntity b where b.lcid=0 and b.loseName=? order by lid desc ";
+
+//        分页查询
+        Query query = session.createQuery(hql);
+        //条件查询用query.set....
+        query.setString(0,searchInfo);
+
+        List list = query.list();
+
+        session.close();
+        return list;
     }
 }

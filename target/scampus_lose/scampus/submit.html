@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="../css/weui.css">
     <link rel="stylesheet" href="../css/jquery-weui.css">
     <link rel="stylesheet" href="../css/demos.css">
-    <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script src="../js/jquery-weui.js"></script>
 </head>
 <body>
 <div>
     <h1 class="demos-title" style="font-size:20px">明德失物招领信息发布中心</h1>
     <br>
-    <form action="../li/submitInfo.action" method="post" id="loseinfo" enctype="multipart/form-data">
+    <form action="../li/submitInfo.action" method="post" id="loseinfo">
 
         <div class="weui_cell weui_cell_warn">
             <div class="weui_cell_hd"><label id="lose-name" class="weui_label">标题</label></div>
@@ -27,55 +27,17 @@
 
 
         <!--类型选择-->
-        <div class="weui_cell">
-            <div class="weui_cell_hd"><label class="weui_label">发布类型</label></div>
+
+        <div class="weui_cell weui_cell_select">
+            &nbsp;&nbsp;&nbsp;类型:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" id="job" name="sub.lose_type" type="text" value="">
+                <select class="weui_select" name="sub.lose_type">
+
+                    <option value="失物申报">失物申报</option>
+                    <option value="失物上交">失物上交</option>
+                </select>
             </div>
         </div>
-        <script src="../js/jquery-2.1.4.js"></script>
-        <script src="../js/fastclick.js"></script>
-        <script>
-            $(function () {
-                FastClick.attach(document.body);
-            });
-        </script>
-        <script src="../js/jquery-weui.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#job").focus(function () {
-                    $("#job").attr("disabled", true);
-                    $.actions({
-                        title: "请选择类型",
-                        onClose: function () {
-                            console.log("close");
-                            $("#job").attr("disabled", false);
-                        },
-                        actions: [
-                            {
-                                text: "失物上交",
-                                className: "color-warning",
-                                onClick: function () {
-                                    $("#job").val("失物上交");
-                                    $("#job").attr("disabled", false);
-                                }
-                            },
-                            {
-                                text: "失物申报",
-                                className: "color-primary",
-                                onClick: function () {
-                                    $("#job").val("失物申报");
-                                    $("#job").attr("disabled", false);
-
-                                }
-                            }
-                        ]
-                    });
-                });
-
-
-            });
-        </script>
 
 
         <div class="weui_cell weui_cell_warn">
@@ -101,6 +63,63 @@
             </div>
         </div>
         <!--图片上传-->
+
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/ajaxupload.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                //上传图片
+                new AjaxUpload('#images', {
+                    action: 'upload',
+                    name: 'picFile',
+
+                    responseType: 'json',
+                    onSubmit: function (file, ext) {
+                        if (ext && /^(jpg|png|bmp)$/.test(ext.toLowerCase())) {
+                            this.setData({
+                                'picName': file
+                            });
+                        } else {
+                            alert("请上传格式为 jpg|png|bmp 的图片！");
+                            return false;
+                        }
+                    },
+                    onComplete: function (file, response) {
+                        if (response.error) {
+                            alert(response.error);
+                            return;
+                        }
+                        $("#limage").css("background-image", "url(" + response + ")");
+                        $("#lose_img").val(response);
+                    }
+                });
+            })
+        </script>
+
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        <div class="weui_uploader_hd weui_cell">
+                            <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+
+                        </div>
+                        <div class="weui_uploader_bd">
+                            <ul class="weui_uploader_files">
+                                <li class="weui_uploader_file" id="limage"
+                                    style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+
+                            </ul>
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" id="images" type="file" accept="image/*" multiple="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <input  type="text" style="display: none" value="aa" name="sub.lose_img" id="lose_img"/>
 
         <!--确定按钮-->
         <div class="weui_btn_area">
@@ -154,12 +173,12 @@
 
 
                 $("#showTooltips").click(function () {
-                    var wang = $("#job").val();
+
                     var a1 = $("#lose_phone").val();
                     var a2 = $("#lose_location").val();
                     var a3 = $("#lose_name").val();
                     if ((a1.replace(/(^s*)|(s*$)/g, "").length != 0 && a2.replace(/(^s*)|(s*$)/g, "").length != 0 && a3.replace(/(^s*)|(s*$)/g, "").length != 0
-                        ) && (sum_lose_name == 0 && sum_lose_phone == 0 && sum_lose_location == 0 && wang.length != 0)) {
+                        ) && (sum_lose_name == 0 && sum_lose_phone == 0 && sum_lose_location == 0)) {
 
                         $("#loseinfo").submit();
                     } else {
@@ -181,7 +200,7 @@
 </div>
 
 
-<script src="js/jquery-weui.js"></script>
+<script src="../js/jquery-weui.js"></script>
 
 <script>
     $(document).on("click", "#show-actions", function () {
@@ -192,10 +211,21 @@
             },
             actions: [
                 {
+
                     text: "搜索",
                     className: "color-warning",
                     onClick: function () {
-                        $.alert("3.13日开放此功能,敬请关注.");
+                        $.prompt({
+                            text: "请输入搜索的内容：",
+                            title: "输入姓名",
+                            onOK: function(text) {
+                                location.href="search?searchInfo="+text+"";
+                            },
+                            onCancel: function() {
+                                console.log("取消");
+                            },
+                            input: '一卡通'
+                        });
                     }
                 },
                 {
@@ -204,13 +234,6 @@
                     onClick: function () {
                         location.href = "../lose.html";
                     }
-                },
-                {
-                    text: "公告",
-                    className: 'color-danger',
-                    onClick: function () {
-                        $.alert("3.13日开放此功能,敬请关注.");
-                    }
                 }
             ]
         });
@@ -218,7 +241,7 @@
 </script>
 
 
-<br><br>
+<br>
 <div align="center" style="font-style: italic;color: #9B9B9B">
     <p>&copy;明德微校园&nbsp;&nbsp;&nbsp;&nbsp;<font>MrCrab</font></p>
 </div>
